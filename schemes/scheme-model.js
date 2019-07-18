@@ -28,12 +28,15 @@ function findById(id) {
     });
 }
 
+//returns steps for a given scheme id in the req.params
 function findSteps(id) {
-  return db("steps as s")
-    .innerJoin("schemes as sc", "sc.id", "s.step_number")
+  return db("schemes as sc")
+    .innerJoin("steps as s", "sc.id", "s.scheme_id")
     .select("s.id", "sc.scheme_name", "s.step_number", "s.instructions")
-    .where("s.id", id);
+    .where("sc.id", id);
 }
+
+//innerJOin - grab steps.scheme_id
 
 //add a new scheme to db
 function add(scheme) {
