@@ -36,8 +36,6 @@ function findSteps(id) {
     .where("sc.id", id);
 }
 
-//innerJOin - grab steps.scheme_id
-
 //add a new scheme to db
 function add(scheme) {
   return db("schemes")
